@@ -15,6 +15,7 @@ export class NewPostComponent implements OnInit {
   get name() { return this.registerPost.get('name')}; 
   get year() { return this.registerPost.get('year')}; 
   get image() { return this.registerPost.get('image')}; 
+  get estado() { return this.registerPost.get('estado')};
 
   private imagen:any;
   constructor(
@@ -27,6 +28,7 @@ export class NewPostComponent implements OnInit {
     image: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     year: new FormControl('',[Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(4)]),
+    estado: new FormControl('')
   })
 
   ngOnInit() {

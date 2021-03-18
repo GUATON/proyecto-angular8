@@ -23,17 +23,27 @@ export class PostEditComponent implements OnInit {
     private router : Router
   ) {}
 
+
+  get id() { return this.editPost.get('id'); }
+  get band() { return this.editPost.get('band'); }
+  get name() { return this.editPost.get('name'); }
+  get year() { return this.editPost.get('year'); }
+  get imagen() { return this.editPost.get('image'); }
+  get estado() { return this.editPost.get('estado'); }
+
    public editPost = new FormGroup({
     id: new FormControl(''),
     band: new FormControl('', [Validators.required, Validators.minLength(6)]),
     image: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     year: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(4)]),
+    estado: new FormControl('false')
   })
 
   ngOnInit() {
     const idPost = this.route.snapshot.params['id'];
    this.angularFirestore.mostrarPost(idPost).subscribe(data =>{
+     console.log(data.payload.data()['estado']);
     this.image = data.payload.data()['image'];
     this.editPost.patchValue({
       id: idPost,
@@ -41,6 +51,7 @@ export class PostEditComponent implements OnInit {
       name: data.payload.data()['name'],
       year: data.payload.data()["year"],
       image: data.payload.data()['image'],
+      estado: data.payload.data()['estado'],
       
       
     });
@@ -74,11 +85,7 @@ export class PostEditComponent implements OnInit {
 
 
 
-  get id() { return this.editPost.get('id'); }
-  get band() { return this.editPost.get('band'); }
-  get name() { return this.editPost.get('name'); }
-  get year() { return this.editPost.get('year'); }
-  get imagen() { return this.editPost.get('image'); }
+
   
 
 

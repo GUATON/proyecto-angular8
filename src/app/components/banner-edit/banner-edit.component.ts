@@ -49,8 +49,9 @@ get imagen() { return this.editBanner.get('image'); }
 
 
  EditBanner(data: Banner){
+  const idPost = this.route.snapshot.params['id'];
     console.log(data);
-    this.bannerFirestore.preAddBanner(data, this.image);
+    this.bannerFirestore.preEditbanner(idPost, data, this.image);
     Swal.fire({
       title: 'Bien!',
       text: 'Banner Editado Correctamente',

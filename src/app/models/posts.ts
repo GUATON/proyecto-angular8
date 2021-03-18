@@ -4,5 +4,6 @@ export interface Post {
     image?: any,
     name?:string,
     votes?: string,
-    year?: string
+    year?: string,
+    estado?: boolean
 }
