@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "proyecto-bbb19": {
+      "hosting": {
+        "Proyecto": [
+          "proyecto-bbb19"
+        ]
+      }
+    }
+  }
+}

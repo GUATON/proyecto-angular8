@@ -1,0 +1,98 @@
+/* dd1d26 (Accent)
+============================================================================= */
+/* selection
+----------------------------------------------------------------------------- */
+::selection {
+    color: #ffffff;
+    text-shadow: none;
+    background-color: #dd1d26;
+}
+::-webkit-selection {
+    color: #ffffff;
+    text-shadow: none;
+    background-color: #dd1d26;
+}
+::-moz-selection {
+    color: #ffffff;
+    text-shadow: none;
+    background-color: #dd1d26;
+}
+
+/* color
+----------------------------------------------------------------------------- */
+a,
+.gfort-block-nav-menu ul .active a,
+.gfort-block-accordion .gfort-block-panel .gfort-block-panel-heading button:hover,
+.gfort-block-accordion .gfort-block-panel .gfort-block-panel-heading button[aria-expanded=true],
+.gfort-btn-primary.gfort-btn-outline,
+.gfort-btn-primary.gfort-btn-outline-reverse:hover,
+.gfort-nav-tabs .gfort-nav-link.active {
+    color: #dd1d26;
+}
+
+/* background color
+----------------------------------------------------------------------------- */
+.gfort-badge-primary,
+.gfort-form-control[type=checkbox]:checked,
+.gfort-block-panel-primary .gfort-block-panel-heading,
+.gfort-btn-primary,
+.gfort-btn-primary.gfort-btn-outline:hover,
+.gfort-social-icons ul li:hover a i,
+.gfort-social-icons.gfort-social-icons-transparent ul li:hover a i,
+.gfort-owl-slider.owl-carousel .owl-nav button:hover,
+.mejs__audio .mejs__controls,
+.widget_calendar table tbody a,
+.gfort-block-pagination ul .active a,
+.gfort-block-pagination ul .active a:hover,
+.gfort-block-nav-menu-layout-2 ul li a:hover,
+.gfort-block-nav-menu-layout-2 ul li.active a,
+.gfort-price-slider .ui-slider-range,
+.gfort-price-slider .ui-slider-handle {
+    background-color: #dd1d26;
+}
+
+.gfort-form-control[type=range]::-webkit-slider-thumb { background-color: #dd1d26; }
+.gfort-form-control[type=range]::-moz-range-thumb { background-color: #dd1d26; }
+
+/* border color
+----------------------------------------------------------------------------- */
+.gfort-form-control:focus,
+.gfort-form-control[type=radio]:checked,
+.gfort-form-control[type=checkbox]:checked,
+.gfort-form-control[type=radio]:checked:focus,
+.gfort-form-control[type=checkbox]:checked:focus,
+.gfort-block-panel-primary,
+.gfort-btn-primary,
+.gfort-btn-primary.gfort-btn-outline:hover,
+.gfort-lightbox-wrapper .fancybox-thumbs__list a::before,
+.gfort-nav-tabs .gfort-nav-link.active {
+    border-color: #dd1d26;
+}
+
+
+/* ba1820
+============================================================================= */
+.accent-alt-color,
+.gfort-btn-link:hover {
+    color: #ba1820;
+}
+.accent-alt-bg-color,
+.gfort-btn-primary:not(.gfort-btn-outline):not(.gfort-btn-outline-reverse):hover {
+    background-color: #ba1820;
+}
+.accent-alt-border-color,
+.gfort-btn-primary:not(.gfort-btn-outline):not(.gfort-btn-outline-reverse):hover {
+    border-color: #ba1820;
+}
+
+
+/* Main classes
+============================================================================= */
+/* Accent
+----------------------------------------------------------------------------- */
+.accent-color,
+.accent-hover-color:hover {
+    color: #dd1d26;
+}
+.accent-bg-color { background-color: #dd1d26; }
+.accent-border-color { border-color: #dd1d26; }

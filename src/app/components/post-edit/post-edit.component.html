@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-8 mx-auto mt-3">
+          <div class="card border-primary mb-3">
+              <div class="card-header">Editar Disco</div>
+              <div class="card-body text-primary">
+              <form [formGroup]="editPost" (ngSubmit)="saveEdit(editPost.value)">
+                <input type="hidden" formControlName="id">
+                  <div class="form-group" [ngClass]="{ 'has-danger' : band.invalid && (band.dirty || band.touched) } ">
+                      <label for="exampleFormControlInput1">Nombre de la Banda</label>
+                      <input type="text" 
+                      class="form-control" 
+                      [ngClass]="{ 'is-invalid' : band.invalid && (band.dirty || band.touched) } "
+                      placeholder="Ingrese Nombre Banda"  
+                      formControlName="band" 
+                      required>
+                      <div class="invalid-feedback" *ngIf="band.invalid && (band.dirty || band.touched)">
+                          Ingese nombre de la banda
+                      </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-danger' : name.invalid && (name.dirty || name.touched) } ">
+                      <label for="exampleFormControlSelect1">Nombre Disco</label>
+                      <input type="text" 
+                      class="form-control" 
+                      [ngClass]="{ 'is-invalid' : name.invalid && (name.dirty || name.touched) } "
+                      placeholder="Ingrese Nombre Disco" 
+                      formControlName="name" 
+                      required>
+                      <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+                          Ingese nombre del disco
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect2">Imagen de Disco</label>
+                      <input type="file" 
+                      class="form-control-file"
+                      formControlName="image" 
+                      (change)="handleImage($event)" 
+                      required>
+                      <img [src]="image" *ngIf="imagen" style="height: 200px; width:400px">
+                      <div class="invalid-feedback" *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)">
+                          Ingese imagen del disco
+                      </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-danger' : year.invalid && (year.dirty || year.touched) } ">
+                      <label for="exampleFormControlTextarea1">Año Disco</label>
+                      <input type="text" 
+                      class="form-control" 
+                      [ngClass]="{ 'is-invalid' : year.invalid && (year.dirty || year.touched) } "
+                      placeholder="Ingrese Año Disco" 
+                      formControlName="year" 
+                      required>
+                      <div class="invalid-feedback" *ngIf="year.invalid && (year.dirty || year.touched)">
+                          Ingese año del disco
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block btn-lg">Editar Datos</button>
+                  </form>
+                </div>
+            </div>
+            
+        </div>
+     </div>
+</div>

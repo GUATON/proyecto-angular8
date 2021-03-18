@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><img src="../../../assets/icon-1.png" width="50" height="50"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" *ngIf="authS.userData | async">
+          <a class="nav-link" [routerLink]="['/admin/home']">Home
+          </a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="authS.userData | async">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Posts</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/admin/post']">Ver Posts</a>
+            <a class="dropdown-item" [routerLink]="['/admin/post-create']">Ingresar Post</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="authS.userData | async">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Banners</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/admin/banner']">Ver Banner</a>
+            <a class="dropdown-item" [routerLink]="['/admin/banner-create']">Ingresar Banner</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-item dropdown" *ngIf="authS.userData | async as user">
+				<ul class="navbar-nav mr-5">
+          <li class="nav-item dropdown mr-5">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.email}}</a>
+            <div class="dropdown-menu">
+              <!--<a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>-->
+              <div class="dropdown-divider"></div>
+              <a *ngIf="authS.userData | async" class="dropdown-item" (click)="onLogout()">Salir</a>
+            </div>
+          </li>
+        </ul>
+			</div>
+    </div>
+  </nav>

@@ -1,0 +1,58 @@
+<app-header></app-header>
+<nav aria-label="breadcrumb mt-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page"></li>
+    </ol>
+  </nav>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-8 mx-auto mt-3">
+          <div class="card border-primary mb-3">
+              <div class="card-header">Ingresar Banner</div>
+              <div class="card-body text-primary">
+                  <form [formGroup]="editBanner" (ngSubmit)="EditBanner(editBanner.value)">
+                  <div class="form-group" [ngClass]="{ 'has-danger' : title.invalid && (title.dirty || title.touched) } ">
+                      <label for="exampleFormControlInput1">Titulo del Banner</label>
+                      <input type="text" 
+                      class="form-control" 
+                      [ngClass]="{ 'is-invalid' : title.invalid && (title.dirty || title.touched) } "
+                      placeholder="Ingrese Texto del Banner" 
+                      formControlName="title" 
+                      required>
+                      <div class="invalid-feedback" *ngIf="title.invalid && (title.dirty || title.touched)">
+                          Ingese titulo del banner
+                      </div>
+                      </div>
+                  <div class="form-group" [ngClass]="{ 'has-danger' : text.invalid && (text.dirty || text.touched) } ">
+                      <label for="exampleFormControlInput1">Texto del Banner</label>
+                      <input type="text" 
+                      class="form-control" 
+                      [ngClass]="{ 'is-invalid' : text.invalid && (text.dirty || text.touched) } "
+                      placeholder="Ingrese Texto del Banner" 
+                      formControlName="text" 
+                      required>
+                      <div class="invalid-feedback" *ngIf="text.invalid && (text.dirty || text.touched)">
+                        Ingese texto del banner
+                    </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-danger' : imagen.invalid && (imagen.dirty || imagen.touched) } ">
+                      <label for="exampleFormControlSelect2">Imagen de Banner</label>
+                      <input type="file" 
+                      class="form-control-file"
+                      [ngClass]="{ 'is-invalid' : imagen.invalid && (imagen.dirty || imagen.touched) } " 
+                      formControlName="image" 
+                      (change)="handleImage($event)" 
+                      required>
+                      <img [src]="image" *ngIf="imagen" style="height: 150px; width:300px">
+                      <div class="invalid-feedback" *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)">
+                        Ingese imagen del banner
+                    </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block btn-lg">Ingresar Datos</button>
+                  </form>
+              </div>
+            </div>
+      
+      </div>
+  </div>
+</div>

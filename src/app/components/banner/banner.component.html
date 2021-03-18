@@ -1,0 +1,44 @@
+<app-header></app-header>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page"></li>
+    </ol>
+  </nav>
+<div class="container">
+    <div class="row">
+        <div class="card border-primary mb-3 col-md-12">
+          <div class="card-header">Listado de Banners</div>
+            <div class="card-body">
+                <div class="table-responsive" *ngIf="items.length > 0; else noBanner">
+                    <table class="table mt-3 table-bordered table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Texto</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of items">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.text }}</td>
+                            <td><img src="{{ item.image }}" class="img-fluid" width="120px" height="100px"> </td>
+                            <td><a routerLink="/admin/banner-edit/{{ item.id }}" class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <button (click)="deleteItem($event, item)" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                        </tr>
+                    </table>
+                </div>
+                <ng-template #noBanner>
+                    <div class="alert alert-danger" role="alert">
+                        No hay Datos
+                      </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+
+      
