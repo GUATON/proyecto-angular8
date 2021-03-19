@@ -18,6 +18,7 @@ export class NewPostComponent implements OnInit {
   get estado() { return this.registerPost.get('estado')};
 
   private imagen:any;
+  valor:any;
   constructor(
     private angularFirestore: FirestoreService,
     private router : Router
@@ -34,6 +35,7 @@ export class NewPostComponent implements OnInit {
   ngOnInit() {
   }
 
+
   newPost(data: Post){
     console.log(data);
     this.angularFirestore.preAddPost(data, this.imagen);
@@ -43,7 +45,6 @@ export class NewPostComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'Entendido'
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result) {
         this.router.navigate(['admin/post']);
       }

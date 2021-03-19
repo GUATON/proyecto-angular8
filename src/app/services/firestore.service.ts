@@ -32,8 +32,7 @@ export class FirestoreService {
   }
 
 
-  getPosts(){
-    
+   getPosts(){
     return this.posts;
   }
 
@@ -54,7 +53,7 @@ export class FirestoreService {
       fileRef: this.filePath,
       name: post.name,
       year: post.year,
-      vote: post.votes
+      estado: post.estado
     };
   this.angularFirestore.collection('posts').add(postObj);
   }

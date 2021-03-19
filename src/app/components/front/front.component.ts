@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../services/firestore.service';
+import { FrontService } from '../../services/front.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Post } from '../../models/posts';
 import { Banner } from '../../models/banner';
@@ -14,19 +15,20 @@ import { BannerService } from 'src/app/services/banner.service';
 })
 export class FrontComponent implements OnInit {
   items: Post[];
-  banners:Banner[]
+  banners:Banner[];
   posts: Observable<Post[]>;
   private postCollection: AngularFirestoreCollection<Post>;
   constructor(
     private postS: FirestoreService,
     private bannerS: BannerService,
+    private frontS: FrontService,
     private angularFirestore: AngularFirestore
   ) { 
     
   }
 
   ngOnInit() {
-    this.postS.getPosts().subscribe(posts => {
+    this.frontS.getFrontPost().subscribe(posts => {
       //console.log(posts)
       this.items = posts;
       });
@@ -36,7 +38,7 @@ export class FrontComponent implements OnInit {
   }
 
   getBanner(){
-    this.bannerS.getBanners().subscribe(banner =>{
+    this.frontS.getFrontBanners().subscribe(banner =>{
       this.banners = banner;
     });
   }

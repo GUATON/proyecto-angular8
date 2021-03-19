@@ -5,5 +5,5 @@ export interface Post {
     name?:string,
     votes?: string,
     year?: string,
-    estado?: boolean
+    estado?: string
 }

@@ -14,6 +14,7 @@ import { AngularFirestoreCollection } from '@angular/fire/firestore';
 })
 export class PostEditComponent implements OnInit {
   private image:any;
+  private state :string;
   private imageOriginal:any;
   public posts: Observable<Post[]>;
   public postCollection : AngularFirestoreCollection<Post>;
@@ -37,13 +38,12 @@ export class PostEditComponent implements OnInit {
     image: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     year: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(4)]),
-    estado: new FormControl('false')
+    estado: new FormControl('')
   })
 
   ngOnInit() {
     const idPost = this.route.snapshot.params['id'];
    this.angularFirestore.mostrarPost(idPost).subscribe(data =>{
-     console.log(data.payload.data()['estado']);
     this.image = data.payload.data()['image'];
     this.editPost.patchValue({
       id: idPost,
@@ -51,7 +51,7 @@ export class PostEditComponent implements OnInit {
       name: data.payload.data()['name'],
       year: data.payload.data()["year"],
       image: data.payload.data()['image'],
-      estado: data.payload.data()['estado'],
+      estado: this.editPost.get('estado').setValue(data.payload.data()["estado"])
       
       
     });
@@ -59,6 +59,11 @@ export class PostEditComponent implements OnInit {
     
     
     
+  }
+
+  changeEstado($event){
+    let state = this.editPost.get("estado").value
+    console.log("selected state--->", state);
   }
 
   saveEdit(data: Post){
