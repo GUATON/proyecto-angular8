@@ -4,6 +4,7 @@ import { Post } from '../../models/posts';
 import 'datatables.net-bs4';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 
 
 
@@ -27,10 +28,16 @@ export class PostComponent implements OnInit {
   editing : boolean = false;
   
   constructor(
-    private postS: FirestoreService
-  ) { }
+    private postS: FirestoreService,
+    private spinner: NgxSpinnerService
+  ) {
+    this.spinner.show();
+     setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+   }
 
-  
+  pageActual: number = 1;
   ngOnInit() {
     this.postS.getPosts().subscribe(posts => {
     console.log(posts)
@@ -38,6 +45,8 @@ export class PostComponent implements OnInit {
     });
     
   }
+
+
 
   deleteItem(event, post){
     Swal.fire({

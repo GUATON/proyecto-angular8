@@ -4,6 +4,7 @@ import { Banner } from '../../models/banner';
 import 'datatables.net-bs4';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-banner',
@@ -16,9 +17,15 @@ export class BannerComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
   dataTable: any;
   constructor(
-    private bannerS: BannerService
-  ) { }
-
+    private bannerS: BannerService,
+    private spinner: NgxSpinnerService
+  ) {
+    this.spinner.show();
+     setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+   }
+  pageActual: number = 1;
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers',

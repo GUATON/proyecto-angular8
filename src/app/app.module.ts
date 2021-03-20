@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule} from '@angular/fire';
@@ -27,6 +27,8 @@ import { NewBannerComponent } from './components/new-banner/new-banner.component
 import { Page404Component } from './components/page404/page404.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
+import { NgxPaginationModule} from 'ngx-pagination';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -56,9 +58,12 @@ import { BannerEditComponent } from './components/banner-edit/banner-edit.compon
     AngularFirestoreModule,
     AngularFireStorageModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxPaginationModule,
+    NgxSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

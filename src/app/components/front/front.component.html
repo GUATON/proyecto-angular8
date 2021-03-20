@@ -9,7 +9,7 @@
     <div class="carousel-item "  *ngFor="let banner of banners; index as i " [ngClass]="{'active': i == 0}">
       <img src="{{ banner.image }}" class="img-fluid" style="width:100%;height:auto;">
       <div class="container">
-        <div class="carousel-caption text-left">
+        <div class="carousel-caption">
           <h1>{{ banner.title }}</h1>
           <p>{{ banner.text}}</p>
           <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
