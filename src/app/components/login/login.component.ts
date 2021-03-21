@@ -43,7 +43,7 @@ onGoogleLogin(){
     this.authS.login(form)
     .then(resp => {
       console.log('Login correcto --->', resp);
-      this.router.navigate(['admin/home']);
+      this.router.navigate(['/home']);
     }).catch(err => {
       console.log('error --->', err);
       Swal.fire({

@@ -31,7 +31,7 @@ export class ForgotPasswordComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result) {
-          this.router.navigate(['admin/login']);
+          this.router.navigate(['/login']);
         }
       })
       
