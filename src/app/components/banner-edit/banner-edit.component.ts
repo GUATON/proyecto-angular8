@@ -13,7 +13,9 @@ import { Banner } from 'src/app/models/banner';
 })
 export class BannerEditComponent implements OnInit {
 public image:any;
+private state :any = '0';
 
+get id() { return this.editBanner.get('id'); }
 get title() { return this.editBanner.get('title'); }
 get text() { return this.editBanner.get('text'); }
 get imagen() { return this.editBanner.get('image'); }
@@ -25,6 +27,7 @@ get imagen() { return this.editBanner.get('image'); }
 
 
   editBanner = new FormGroup({
+    id: new FormControl(''),
     title: new FormControl('', [Validators.required, Validators.minLength(6)]),
     text: new FormControl('', [Validators.required, Validators.minLength(6)]),
     image: new FormControl('', Validators.required),
@@ -51,7 +54,7 @@ get imagen() { return this.editBanner.get('image'); }
  EditBanner(data: Banner){
   const idPost = this.route.snapshot.params['id'];
     console.log(data);
-    this.bannerFirestore.preEditbanner(idPost, data, this.image);
+    this.bannerFirestore.preEditbanner(idPost, data, this.image, this.state);
     Swal.fire({
       title: 'Bien!',
       text: 'Banner Editado Correctamente',
@@ -60,7 +63,7 @@ get imagen() { return this.editBanner.get('image'); }
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result) {
-        this.router.navigate(['admin/banner']);
+        this.router.navigate(['/banner']);
       }
     })
   }
@@ -71,6 +74,7 @@ get imagen() { return this.editBanner.get('image'); }
   
   handleImage(event:any): void{
     this.image = event.target.files[0];
+    this.state = '1';
     console.log(this.image);
   }
 

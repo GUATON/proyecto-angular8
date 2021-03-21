@@ -14,7 +14,7 @@ import { AngularFirestoreCollection } from '@angular/fire/firestore';
 })
 export class PostEditComponent implements OnInit {
   private image:any;
-  private state :string;
+  private state :any = '0';
   private imageOriginal:any;
   public posts: Observable<Post[]>;
   public postCollection : AngularFirestoreCollection<Post>;
@@ -68,7 +68,7 @@ export class PostEditComponent implements OnInit {
 
   saveEdit(data: Post){
     const idPost = this.route.snapshot.params['id'];
-    this.angularFirestore.preEditPost(idPost ,data, this.image);
+    this.angularFirestore.preEditPost(idPost ,data, this.image, this.state);
     Swal.fire({
       title: 'Bien!',
       text: 'Datos Editados Correctamente',
@@ -76,7 +76,7 @@ export class PostEditComponent implements OnInit {
       confirmButtonText: 'Entendido'
     }).then((result) => {
       if (result) {
-        this.router.navigate(['/admin/post']);
+        this.router.navigate(['/post']);
       }
     })
     console.log(data);
@@ -85,6 +85,7 @@ export class PostEditComponent implements OnInit {
 
   handleImage(event:any): void{
     this.image = event.target.files[0];
+    this.state ='1'
     console.log(this.image);
   }
 

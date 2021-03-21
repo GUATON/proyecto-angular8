@@ -41,8 +41,13 @@ export class FirestoreService {
 
   }
 
-  preEditPost(id : string, post: Post, image: Image): void{
-    this.edituploadImage(id, post, image);
+  preEditPost(id : string, post: Post, image: Image, state: string): void{
+    if(state == '0'){
+    this.NotuploadImage(id,post);
+    }else{
+      this.edituploadImage(id, post, image, state);
+    }
+    
 
   }
 
@@ -75,19 +80,21 @@ export class FirestoreService {
   ).subscribe();
   }
   
-  private updatePost(id : string , data: Post){
+  private updatePost(id : string , data: Post, state:string){
     const postEditObj = {
       band : data.band,
       image: this.downloadURL,
       fileRef: this.filePath,
       name: data.name,
-      year: data.year
+      year: data.year,
+      estado: data.estado,
+      votes:data.votes
     };
     //return this.angularFirestore.doc(id).update(post);
     this.angularFirestore.collection('posts').doc(id).set(postEditObj);
   }
 
-  edituploadImage(id : string,post: Post, image: Image){
+  edituploadImage(id : string,post: Post, image: Image, state:string){
     this.filePath = `images/${image.name}`;
     const fileRef = this.storage.ref(this.filePath);
     const task = this.storage.upload(this.filePath, image);
@@ -96,13 +103,27 @@ export class FirestoreService {
       finalize(() => {
         fileRef.getDownloadURL().subscribe( urlImage =>{
           this.downloadURL = urlImage;
-          this.updatePost(id,post);
+          this.updatePost(id,post,state);
           console.log('URL_IMAGE', urlImage);
           console.log('ID', id);
           console.log('POST', post);
         })
       })
     ).subscribe();
+    }
+
+
+    NotuploadImage(id : string , data: Post){
+      const postVotesObj = {
+        band : data.band,
+        image: data.image,
+        name: data.name,
+        year: data.year,
+        estado: data.estado
+      };
+      //console.log(postVotesObj);
+      //return this.angularFirestore.doc(id).update(post);
+      this.angularFirestore.collection('posts').doc(id).set(postVotesObj);
     }
 
   deletePost(post: Post){

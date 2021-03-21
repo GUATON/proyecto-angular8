@@ -40,10 +40,7 @@ export class BannerService {
 
   }
 
-  preEditbanner(id : string, post: Banner, image: Image): void{
-    this.edituploadImage(id, post, image);
-
-  }
+  
 
   private saveBanner(banner: Banner){
     const postObj = {
@@ -72,17 +69,29 @@ export class BannerService {
     ).subscribe();
     }
 
+    
+    preEditbanner(id : string, banner: Banner, image: Image, state: string): void{
+      if(state == '0'){
+        this.NotuploadImage(id,banner);
+        }else{
+      this.edituploadImage(id, banner, image);
+        }
 
+  
+    }
 
     private updateBanner(id : string , data: Banner){
+
       const bannerEditObj = {
         title : data.title,
+        text: data.text,
         image: this.downloadURL,
-        fileRef: this.filePath,
-        text: data.text
+        fileRef: this.filePath
+        
       };
+      //console.log(bannerEditObj);
       //return this.angularFirestore.doc(id).update(post);
-      this.angularFirestore.collection('posts').doc(id).set(bannerEditObj);
+      this.angularFirestore.collection('banner').doc(id).set(bannerEditObj);
     }
 
 
@@ -104,6 +113,19 @@ export class BannerService {
         })
       ).subscribe();
       }
+    
+
+      NotuploadImage(id : string , data: Banner){
+        const postVotesObj = {
+          title : data.title,
+          text: data.text,
+          image: data.image
+        };
+        //console.log(postVotesObj);
+        //return this.angularFirestore.doc(id).update(post);
+        this.angularFirestore.collection('banner').doc(id).set(postVotesObj);
+      }
+
 
     deletebanner(banner: Banner){
       this.itemDoc = this.angularFirestore.doc(`banner/${banner.id}`);

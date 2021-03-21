@@ -7,6 +7,8 @@ import { Banner } from '../../models/banner';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { BannerService } from 'src/app/services/banner.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-front',
@@ -18,7 +20,7 @@ export class FrontComponent implements OnInit {
   nextPost: Post[];
   banners:Banner[];
   posts: Observable<Post[]>;
-  discos: any [] =[];
+  discos: any [] = [];
   private postCollection: AngularFirestoreCollection<Post>;
   constructor(
     private postS: FirestoreService,
@@ -26,12 +28,7 @@ export class FrontComponent implements OnInit {
     private frontS: FrontService,
     private angularFirestore: AngularFirestore
   ) { 
-    this.frontS.getVotes().pipe(
-      map( (resp: Post[]) => resp.map( ({band, votes}) => ({band, value: votes}) ))
-      ).subscribe(discs => {
-        console.log(discs);
-        this.discos = discs;
-      })
+    
     
   }
 
@@ -40,9 +37,10 @@ export class FrontComponent implements OnInit {
       //console.log(posts)
       this.items = posts;
       });
-
+    //this.getVotesPost();
     this.getBanner();
     this.getFuturePost();
+    
 
   }
 
@@ -57,5 +55,29 @@ export class FrontComponent implements OnInit {
       this.nextPost = nxposts;
       });
   }
+
+  /*getVotesPost(){
+    this.frontS.getVotes().pipe(
+      map( (resp: Post[]) => resp.map( ({band, votes}) => ({band, value: votes}) ))
+      ).subscribe(discs => {
+        console.log(discs);
+        this.discos = discs;
+      });
+
+      this.frontS.getVotes().pipe(
+        map( (resp: Post[]) => {
+          return resp.map( data =>{
+            return{
+              banda: data.band,
+              votes: data.votes
+            }
+          })
+        })
+      ).subscribe( resp =>{
+        console.log(resp);
+        this.discos = [resp];
+      })
+      
+  }*/
 
 }

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <nav aria-label="breadcrumb mt-4">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page"><a [routerLink]="['/admin/banner']" class="btn btn-warning btn-sm">Volver</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a [routerLink]="['banner']" class="btn btn-warning btn-sm">Volver</a></li>
   </ol>
 </nav>
 <div class="container">
@@ -11,6 +11,7 @@
               <div class="card-header">Ingresar Banner</div>
               <div class="card-body text-primary">
                   <form [formGroup]="editBanner" (ngSubmit)="EditBanner(editBanner.value)">
+                    <input type="text" formControlName="id">
                   <div class="form-group" [ngClass]="{ 'has-danger' : title.invalid && (title.dirty || title.touched) } ">
                       <label for="exampleFormControlInput1">Titulo del Banner</label>
                       <input type="text" 

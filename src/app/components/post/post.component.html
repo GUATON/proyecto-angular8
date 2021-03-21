@@ -33,7 +33,7 @@
                                 <span *ngIf="item.estado == 'true'" class="badge badge-success">Activo</span>
                                 <span *ngIf="item.estado == 'false'" class="badge badge-danger">Inactivo</span>
                             </td>
-                            <td><a routerLink="/admin/post-edit/{{ item.id }}" class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
+                            <td><a routerLink="/post-edit/{{ item.id }}" class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
                                 <button (click)="deleteItem($event, item)" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                         </tr>
                     </table>
