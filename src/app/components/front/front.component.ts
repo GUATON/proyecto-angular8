@@ -15,8 +15,10 @@ import { BannerService } from 'src/app/services/banner.service';
 })
 export class FrontComponent implements OnInit {
   items: Post[];
+  nextPost: Post[];
   banners:Banner[];
   posts: Observable<Post[]>;
+  discos: any [] =[];
   private postCollection: AngularFirestoreCollection<Post>;
   constructor(
     private postS: FirestoreService,
@@ -24,6 +26,12 @@ export class FrontComponent implements OnInit {
     private frontS: FrontService,
     private angularFirestore: AngularFirestore
   ) { 
+    this.frontS.getVotes().pipe(
+      map( (resp: Post[]) => resp.map( ({band, votes}) => ({band, value: votes}) ))
+      ).subscribe(discs => {
+        console.log(discs);
+        this.discos = discs;
+      })
     
   }
 
@@ -34,6 +42,7 @@ export class FrontComponent implements OnInit {
       });
 
     this.getBanner();
+    this.getFuturePost();
 
   }
 
@@ -41,6 +50,12 @@ export class FrontComponent implements OnInit {
     this.frontS.getFrontBanners().subscribe(banner =>{
       this.banners = banner;
     });
+  }
+
+  getFuturePost(){
+    this.frontS.getNextPost().subscribe(nxposts => {
+      this.nextPost = nxposts;
+      });
   }
 
 }

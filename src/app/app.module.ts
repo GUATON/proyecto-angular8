@@ -29,6 +29,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { FrontDetailComponent } from './components/front-detail/front-detail.component';
+import { GraficoComponent } from './components/grafico/grafico.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -48,7 +52,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     Page404Component,
     ForgotPasswordComponent,
     BannerEditComponent,
-    HeaderBannerComponent
+    HeaderBannerComponent,
+    FrontDetailComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ReactiveFormsModule,
     DataTablesModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

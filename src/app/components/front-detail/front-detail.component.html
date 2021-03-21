@@ -1,0 +1,46 @@
+<app-header-banner></app-header-banner>
+<nav aria-label="breadcrumb mt-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page"><a [routerLink]="['/']" class="btn btn-warning btn-sm">Volver</a></li>
+    </ol>
+  </nav>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{bandname}}
+      
+    </h1>
+  
+    <!-- Portfolio Item Row -->
+    <div class="row">
+  
+      <div class="col-md-8">
+        <img class="img-fluid mb-3" src="{{imagedisc}}" alt="">
+      </div>
+  
+      <div class="col-md-4">
+        <h3 class="my-3">{{namedisc}}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+        <h3 class="my-3">Votos :</h3>
+        <p>{{votesdisc}}</p>
+        <form [formGroup]="editVote" (ngSubmit)="saveVotesEdit(editVote.value)">
+          <input type="hidden" formControlName="id">
+          <input type="hidden" formControlName="votes">
+          <input type="hidden" formControlName="band">
+          <input type="hidden" formControlName="name">
+          <input type="hidden" formControlName="year">
+          <input type="hidden" formControlName="image">
+          <input type="hidden" formControlName="estado">
+          <button type="submit" class="btn btn-warning btn-block btn-lg">Votar</button>
+          </form>
+        
+      </div>
+  
+    </div>
+    <!-- /.row --> 
+    
+ 
+  <!-- /.row -->
+  </div>
+  <!-- /.container -->

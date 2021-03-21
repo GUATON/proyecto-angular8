@@ -3,7 +3,7 @@ export interface Post {
     band?: string,
     image?: any,
     name?:string,
-    votes?: string,
+    votes?: number,
     year?: string,
     estado?: string
 }

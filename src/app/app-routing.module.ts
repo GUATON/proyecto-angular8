@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FrontDetailComponent } from './components/front-detail/front-detail.component';
 import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -18,7 +19,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path:'', component:FrontComponent},
-  //{path:'admin/register', component:RegisterComponent},
+  {path:'details/:id', component:FrontDetailComponent},
   {path:'admin/login', component:LoginComponent},
   {path:'admin/recuperar', component:ForgotPasswordComponent},
   {path:'admin/home' , 
