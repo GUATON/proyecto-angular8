@@ -46,7 +46,7 @@ export class NewPostComponent implements OnInit {
       confirmButtonText: 'Entendido'
     }).then((result) => {
       if (result) {
-        this.router.navigate(['admin/post']);
+        this.router.navigate(['/post']);
       }
     })
   }
