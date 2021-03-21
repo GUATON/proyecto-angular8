@@ -11,7 +11,7 @@
               <div class="card-header">Ingresar Banner</div>
               <div class="card-body text-primary">
                   <form [formGroup]="editBanner" (ngSubmit)="EditBanner(editBanner.value)">
-                    <input type="text" formControlName="id">
+                    <input type="hidden" formControlName="id">
                   <div class="form-group" [ngClass]="{ 'has-danger' : title.invalid && (title.dirty || title.touched) } ">
                       <label for="exampleFormControlInput1">Titulo del Banner</label>
                       <input type="text" 

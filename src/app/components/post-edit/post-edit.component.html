@@ -11,8 +11,7 @@
               <div class="card-header">Editar Disco</div>
               <div class="card-body text-primary">
               <form [formGroup]="editPost" (ngSubmit)="saveEdit(editPost.value)">
-                <input type="text" formControlName="id">
-                <input type="text" formControlName="image" >
+                <input type="hidden" formControlName="id">
                   <div class="form-group" [ngClass]="{ 'has-danger' : band.invalid && (band.dirty || band.touched) } ">
                       <label for="exampleFormControlInput1">Nombre de la Banda</label>
                       <input type="text" 
