@@ -16,6 +16,7 @@ export class BannerComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   dataTable: any;
+  filterBanner ='';
   constructor(
     private bannerS: BannerService,
     private spinner: NgxSpinnerService

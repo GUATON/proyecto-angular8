@@ -6,6 +6,11 @@
   </nav>
 <div class="container">
     <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" name="filterBanner" placeholder="Buscar por titulo o texto..." [(ngModel)]="filterBanner">
+            </div>
+        </div>
         <div class="card border-primary mb-3 col-md-12">
           <div class="card-header">Listado de Banners <a [routerLink]="['/banner-create']" class="btn btn-info btn-sm pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Banner</a></div>
             <div class="card-body">
@@ -22,7 +27,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let item of items | paginate: {itemsPerPage: 4, currentPage: pageActual} let i = index">
+                        <tr *ngFor="let item of items | filterBanner: filterBanner | paginate: {itemsPerPage: 4, currentPage: pageActual} let i = index">
                             <td>{{ i+1}}</td>
                             <td>{{ item.id }}</td>
                             <td>{{ item.title }}</td>

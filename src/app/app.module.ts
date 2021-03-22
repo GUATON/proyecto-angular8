@@ -6,6 +6,7 @@ import { AngularFireModule} from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
+import { FormsModule} from '@angular/forms';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
@@ -33,6 +34,8 @@ import { FrontDetailComponent } from './components/front-detail/front-detail.com
 import { GraficoComponent } from './components/grafico/grafico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterBannerPipe } from './pipes/filter-banner.pipe';
 
 
 @NgModule({
@@ -54,7 +57,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     BannerEditComponent,
     HeaderBannerComponent,
     FrontDetailComponent,
-    GraficoComponent
+    GraficoComponent,
+    FilterPipe,
+    FilterBannerPipe
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgxPaginationModule,
     NgxSpinnerModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

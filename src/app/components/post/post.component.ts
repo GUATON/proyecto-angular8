@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Inject, Output } from '@angular/core';
 import { FirestoreService } from '../../services/firestore.service';
+import { FormsModule} from '@angular/forms';
 import { Post } from '../../models/posts';
 import 'datatables.net-bs4';
 import { Subject } from 'rxjs';
@@ -26,7 +27,7 @@ export class PostComponent implements OnInit {
   dataTable: any;
   editingPost : Post;
   editing : boolean = false;
-  
+  filterPost ='';
   constructor(
     private postS: FirestoreService,
     private spinner: NgxSpinnerService
