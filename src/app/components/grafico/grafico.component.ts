@@ -15,8 +15,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 })
 export class GraficoComponent implements OnInit {
   
-  //@Input() results: any[] = [];
-  results: any[] = [];
+  @Input() results: any[] = [];
+  //results: any[] = [];
 
   view: any[] = [1100, 300];
 
@@ -41,13 +41,13 @@ export class GraficoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getVotesPost();
+    //this.getVotesPost();
   }
   onSelect(event) {
     console.log(event);
   }
 
-  getVotesPost(){
+  /*getVotesPost(){
     this.frontS.getVotes().pipe(
       map( (resp: Post[]) => resp.map( ({band, votes}) => ({name: band, value: votes}) ))
       ).subscribe(discs => {
@@ -56,6 +56,6 @@ export class GraficoComponent implements OnInit {
       });
 
       
-  }
+  }*/
 
 }

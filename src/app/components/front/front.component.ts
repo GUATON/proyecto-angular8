@@ -40,7 +40,7 @@ export class FrontComponent implements OnInit {
     //this.getVotesPost();
     this.getBanner();
     this.getFuturePost();
-    
+    this.getVotesPost();
 
   }
 
@@ -56,28 +56,14 @@ export class FrontComponent implements OnInit {
       });
   }
 
-  /*getVotesPost(){
+  getVotesPost(){
     this.frontS.getVotes().pipe(
-      map( (resp: Post[]) => resp.map( ({band, votes}) => ({band, value: votes}) ))
+      map( (resp: Post[]) => resp.map( ({band, votes}) => ({name: band, value: votes}) ))
       ).subscribe(discs => {
-        console.log(discs);
+        console.log(JSON.stringify(discs));
         this.discos = discs;
       });
-
-      this.frontS.getVotes().pipe(
-        map( (resp: Post[]) => {
-          return resp.map( data =>{
-            return{
-              banda: data.band,
-              votes: data.votes
-            }
-          })
-        })
-      ).subscribe( resp =>{
-        console.log(resp);
-        this.discos = [resp];
-      })
       
-  }*/
+  }
 
 }
